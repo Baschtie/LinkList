@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  url: MyString
+  category: MyString
+  does_expire: false
+  experies_on: 2017-07-21
+
+two:
+  name: MyString
+  description: MyString
+  url: MyString
+  category: MyString
+  does_expire: false
+  experies_on: 2017-07-21
