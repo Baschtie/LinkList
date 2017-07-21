@@ -1,0 +1,28 @@
+%h2 Forgot your password?
+= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+  .ui.error.message
+    = f.error_notification
+  = f.input :email, required: true, autofocus: true
+  .actions
+    = f.button :button, "Send me reset password instructions", :type => :submit, :class => "ui button primary load"
+.ui.divider
+= render "devise/shared/links"
+
+:javascript
+  $('.simple_form.ui.form')
+  .form({
+    fields: {
+      user_email: {
+        rules: [
+          {
+            type: 'email',
+            prompt: 'please enter a valid email'
+          }
+        ]
+      }
+    },
+    onFailure: function() {
+    $('.loading.disabled').removeClass('disabled loading');
+    return false;
+    }
+  });

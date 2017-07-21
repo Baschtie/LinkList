@@ -1,0 +1,43 @@
+%h2 Change your password
+= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+  .ui.error.message
+    = f.error_notification
+    = f.full_error :reset_password_token
+  = f.input :reset_password_token, as: :hidden
+  = f.input :password, label: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+  = f.input :password_confirmation, label: "Confirm your new password", required: true
+  .actions
+    = f.button :button, "Change my password", :type => :submit, :class => "ui button primary load"
+.ui.divider
+= render "devise/shared/links"
+
+:javascript
+  $('.simple_form.ui.form')
+  .form({
+    fields: {
+      user_password: {
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please create a secure password'
+          },
+          {
+            type: 'minLength[6]',
+            prompt: 'Your password needs to be at least 6 characters long'
+          }
+        ]
+      },
+      user_password_confirmation: {
+        rules: [
+          {
+            type: 'match[user_password]',
+            prompt: 'Password confirmation needs to match password'
+          }
+        ]
+      }
+    },
+    onFailure: function() {
+    $('.loading.disabled').removeClass('disabled loading');
+    return false;
+    }
+  });

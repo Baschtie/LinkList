@@ -1,0 +1,77 @@
+%h2 Sign up
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  .ui.error.message
+    = f.error_notification
+  = f.input :email, autofocus: true
+  = f.input :username
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :password, autocomplete: false
+  = f.input :password_confirmation, autocomplete: false
+  .actions
+    = f.button :button, "Sign up", :type => :submit, :class => "ui button primary load"
+.ui.divider
+= render "devise/shared/links"
+
+:javascript
+  $('.simple_form.ui.form')
+  .form({
+    fields: {
+      user_email: {
+        rules: [
+          {
+            type: 'email',
+            prompt: 'please enter a valid email'
+          }
+        ]
+      },
+      user_username: {
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'please create a username'
+          }
+        ]
+      },
+      user_first_name: {
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'please enter a first name'
+          }
+        ]
+      },
+      user_last_name: {
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'please enter a last name'
+          }
+        ]
+      },
+      user_password: {
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please create a secure password'
+          },
+          {
+            type: 'minLength[6]',
+            prompt: 'Your password needs to be at least 6 characters long'
+          }
+        ]
+      },
+      user_password_confirmation: {
+        rules: [
+          {
+            type: 'match[user_password]',
+            prompt: 'Password confirmation needs to match password'
+          }
+        ]
+      }
+    },
+    onFailure: function() {
+    $('.loading.disabled').removeClass('disabled loading');
+    return false;
+    }
+  });

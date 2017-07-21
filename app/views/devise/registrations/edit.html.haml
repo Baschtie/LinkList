@@ -1,0 +1,92 @@
+%h2
+  Edit #{resource_name.to_s.humanize}
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  .ui.error.message
+    = f.error_notification
+  = f.input :username
+  = f.input :email, required: true, autofocus: true
+  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+    %div
+      Currently waiting confirmation for: #{resource.unconfirmed_email}
+  = f.input :password, autocomplete: "off", required: false
+  = f.input :password_confirmation, required: false
+  .ui.divider
+  = f.input :current_password, required: true
+  .actions
+    = f.button :button, "Update", :type => :submit
+.ui.divider
+%h3 Cancel my account
+%button.ui.button.negative#deleteAccount
+  %i.trash.o.icon
+  Delete my account
+= link_to "Back", :back
+
+.ui.modal
+  %i.close.icon
+  .header
+    Confirm action
+  .content
+    .description
+      .ui.header Delete your account?
+    %p
+      This will fully remove your data from our database, meaning that you can not continue using our service.
+      This action cannot be reversed! Which means if you regret your decision (which you will) you have to create a new account.
+    .ui.divider
+    %p Do you wan't to delete your account?
+  .actions
+    .ui.black.deny.button
+      %i.smile.o.icon
+      keep account
+    %a.ui.negative.button.load{:href => registration_path(resource_name), :data => { :method => :delete}}
+      %i.trash.o.icon
+      Delete account
+
+:javascript
+  $('#deleteAccount').click(function() {
+    $('.modal')
+      .modal('show')
+    ;
+  });
+
+  $('.simple_form.ui.form')
+  .form({
+    fields: {
+      user_email: {
+        rules: [
+          {
+            type: 'email',
+            prompt: 'please enter a valid email'
+          }
+        ]
+      },
+      user_current_password: {
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Your current password is required to confirm changes'
+          }
+        ]
+      },
+      user_password: {
+        optional: true,
+        rules: [
+          {
+            type: 'minLength[6]',
+            prompt: 'New Password must be at least 6 characters long'
+          }
+        ]
+      },
+      user_password_confirmation: {
+       rules: [
+        {
+          type: 'match[user_password]',
+          prompt: 'New password confimation must be equal to new password'
+        }
+       ]
+      }
+    },
+    onFailure: function() {
+    $('.loading.disabled').removeClass('disabled loading');
+    return false;
+    }
+  });

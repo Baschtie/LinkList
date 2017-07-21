@@ -1,0 +1,39 @@
+%h2 Log in
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .ui.error.message
+  = f.input :email, required: true, autofocus: true
+  = f.input :password, required: true
+  .field
+    .ui.checkbox
+      = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+  .actions
+    = f.button :button, "Log in", :type => :submit, :class => "ui button primary load"
+.ui.divider
+= render "devise/shared/links"
+
+:javascript
+  $('.simple_form.ui.form')
+  .form({
+    fields: {
+      user_email: {
+        rules: [
+          {
+            type: 'email',
+            prompt: 'Please enter the email of the account'
+          }
+        ]
+      },
+      user_password: {
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the password to the account'
+          }
+        ]
+      }
+    },
+    onFailure: function() {
+    $('.loading.disabled').removeClass('disabled loading');
+    return false;
+    }
+  });

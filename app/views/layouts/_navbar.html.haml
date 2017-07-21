@@ -1,0 +1,32 @@
+.ui.large.menu.fixed.top
+  .ui.container
+    %a.header.item{:href => root_path}
+      %i.database.icon
+      Incom
+    %a.item{:href => root_path, :class => (current_page?(root_path) ? "active" : nil)} Home
+    %a.item{:href => "https://github.com/Baschtie/Incom-Issues/issues", :target => "_blank"} Issue tracker
+
+    - if user_signed_in?
+      .ui.right.simple.dropdown.item
+        %i.user.circle.o.icon
+        = current_user.username
+        %i.dropdown.icon
+        .menu
+          %a.item.disabled{:href => edit_user_registration_path}
+            %i.eye.icon
+            View Account
+          %a.item{:href => edit_user_registration_path}
+            %i.pencil.icon
+            Edit Account
+          .divider
+          %a.item{:href => destroy_user_session_path, :data => {:method => :delete}}
+            %i.sign.out.icon
+            Sign out
+    - else
+      .right.menu
+        %a.item{:href => new_user_session_path}
+          %i.sign.in.icon
+          Sign in
+        %a.item{:href => new_user_registration_path}
+          %i.user.plus.icon
+          Register

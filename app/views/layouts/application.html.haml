@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title LinkList
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    :css
+      body { padding-top: 60px; }
+  %body
+    .ui.main.container
+      = render "layouts/navbar"
+      - if flash[:notice]
+        .ui.info.message
+          %i.close.icon
+          .header
+            %i.info.circle.icon
+            Info!
+          %p=notice
+      - if flash[:alert]
+        .ui.negative.message
+          %i.close.icon
+          .header
+            %i.exclamation.circle.icon
+            Alert!
+          %p=alert
+      = yield
