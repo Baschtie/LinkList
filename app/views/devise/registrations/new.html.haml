@@ -3,9 +3,6 @@
   .ui.error.message
     = f.error_notification
   = f.input :email, autofocus: true
-  = f.input :username
-  = f.input :first_name
-  = f.input :last_name
   = f.input :password, autocomplete: false
   = f.input :password_confirmation, autocomplete: false
   .actions
@@ -22,30 +19,6 @@
           {
             type: 'email',
             prompt: 'please enter a valid email'
-          }
-        ]
-      },
-      user_username: {
-        rules: [
-          {
-            type: 'empty',
-            prompt: 'please create a username'
-          }
-        ]
-      },
-      user_first_name: {
-        rules: [
-          {
-            type: 'empty',
-            prompt: 'please enter a first name'
-          }
-        ]
-      },
-      user_last_name: {
-        rules: [
-          {
-            type: 'empty',
-            prompt: 'please enter a last name'
           }
         ]
       },
