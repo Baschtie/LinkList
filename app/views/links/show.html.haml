@@ -1,24 +1,31 @@
-%p#notice= notice
+.ui.top.attached.menu
+  = link_to "Back", :back, :class => "item"
+  %a.item{:href => links_path}
+    %i.list.icon
+    List
+  %a.item{:href => edit_link_path(@link)}
+    %i.pencil.icon
+    Edit
+  .active.item
+    %i.eye.icon
+    Show
+.ui.attached.segment
 
-%p
-  %b Name:
-  = @link.name
-%p
-  %b Description:
-  = @link.description
-%p
-  %b Url:
-  = @link.url
-%p
-  %b Category:
-  = @link.category
-%p
-  %b Does expire:
-  = @link.does_expire
-%p
-  %b Experies on:
-  = @link.experies_on
-
-= link_to 'Edit', edit_link_path(@link)
-\|
-= link_to 'Back', links_path
+  %p
+    %b Name:
+    = @link.name
+  %p
+    %b Description:
+    = @link.description
+  %p
+    %b Url:
+    = @link.url
+  %p
+    %b Category:
+    = @link.category
+  %p
+    %b Does expire:
+    = @link.does_expire
+  %p
+    %b Experies on:
+    = @link.experies_on

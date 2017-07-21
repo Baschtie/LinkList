@@ -1,6 +1,5 @@
 %h1 Listing links
-
-%table
+%table.ui.selectable.table
   %thead
     %tr
       %th Name
@@ -9,23 +8,24 @@
       %th Category
       %th Does expire
       %th Experies on
-      %th
-      %th
-      %th
+      %th Option
 
   %tbody
     - @links.each do |link|
       %tr
         %td= link.name
         %td= link.description
-        %td= link.url
+        %td
+          %a{:href => link.url, }= link.url
         %td= link.category
         %td= link.does_expire
         %td= link.experies_on
-        %td= link_to 'Show', link
-        %td= link_to 'Edit', edit_link_path(link)
-        %td= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Show', link, :class => "ui mini primary button load"
+
 
 %br
 
-= link_to 'New Link', new_link_path
+.ui.divider
+%a.ui.primary.button.load{:href => new_link_path}
+  %i.plus.icon
+  New product

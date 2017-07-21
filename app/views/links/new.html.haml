@@ -1,5 +1,9 @@
-%h1 New link
-
-= render 'form'
-
-= link_to 'Back', links_path
+.ui.top.attached.menu
+  %a.item{:href => links_path}
+    %i.list.icon
+    List
+  .active.item
+    %i.add.icon
+    New
+.ui.attached.segment
+  = render 'form'

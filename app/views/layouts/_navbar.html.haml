@@ -1,9 +1,10 @@
 .ui.large.menu.fixed.top
   .ui.container
     %a.header.item{:href => root_path}
-      %i.database.icon
-      Incom
+      %i.linkify.icon
+      LinkList
     %a.item{:href => root_path, :class => (current_page?(root_path) ? "active" : nil)} Home
+    %a.item{:href => links_path, :class => (controller_name == "links" ? "active" : nil)} Links
 
     - if user_signed_in?
       .ui.right.simple.dropdown.item

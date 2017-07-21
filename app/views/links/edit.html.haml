@@ -1,7 +1,13 @@
-%h1 Editing link
-
-= render 'form'
-
-= link_to 'Show', @link
-\|
-= link_to 'Back', links_path
+.ui.top.attached.menu
+  = link_to "Back", :back, :class => "item"
+  %a.item{:href => links_path}
+    %i.list.icon
+    List
+  .active.item
+    %i.pencil.icon
+    Edit
+  %a.item{:href => links_path + "/" + @link.id.to_s}
+    %i.eye.icon
+    Show
+.ui.attached.segment
+  = render 'form'

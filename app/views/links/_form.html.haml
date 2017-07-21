@@ -1,28 +1,49 @@
-= form_for @link do |f|
-  - if @link.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@link.errors.count, "error")} prohibited this link from being saved:"
-      %ul
-        - @link.errors.full_messages.each do |message|
-          %li= message
+= simple_form_for @link do |f|
+  .ui.error.message
+    = f.error_notification
 
   .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_field :description
-  .field
-    = f.label :url
-    = f.text_field :url
-  .field
-    = f.label :category
-    = f.text_field :category
-  .field
-    = f.label :does_expire
-    = f.check_box :does_expire
-  .field
-    = f.label :experies_on
-    = f.date_select :experies_on
+    = f.input :name
+    = f.input :description
+    = f.input :url
+    = f.input :category
+    = f.input :does_expire
+    = f.input :experies_on
   .actions
-    = f.submit 'Save'
+    = f.button :button, :type => :submit
+:javascript
+  $('.simple_form.ui.form')
+  .form({
+    fields: {
+      link_name: {
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Name can not be empty'
+          }
+        ]
+      },
+      link_url: {
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'URL can not be empty'
+          }
+        ]
+      }
+    },
+    onFailure: function() {
+    $('.loading.disabled').removeClass('disabled loading');
+    return false;
+    }
+  });
+
+  $('#product_product_code').bind('paste input', function ( event) {
+    if ($(this).val().match(/[^0-9]/)) {
+      $(this).removeAttr('maxLength');
+      $(this).val($(this).val().replace(/[^0-9]/g,""));
+    }
+    if (this.value.length >= 12) {
+      $(this).val($(this).val().substr(0, 12))
+    }
+  });
