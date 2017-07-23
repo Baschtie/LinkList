@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :links
+  get 'links/page/:page' => 'links#index'
   devise_for :users
   root 'home#index'
 

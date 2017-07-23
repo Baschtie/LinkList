@@ -11,5 +11,5 @@
     Show
 .ui.attached.segment
   = render 'form'
-
-= link_to "Delete link", @link, method: :delete, data: { confirm: 'Are you sure?' }
+  .ui.divider
+  = link_to "Delete link", @link, method: :delete, data: { confirm: 'Are you sure?' }, :class => "ui red button"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721133122) do
+ActiveRecord::Schema.define(version: 20170723162236) do
 
   create_table "links", force: :cascade do |t|
     t.string   "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170721133122) do
     t.date     "experies_on"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "belongs_to",  null: false
   end
 
   create_table "users", force: :cascade do |t|
