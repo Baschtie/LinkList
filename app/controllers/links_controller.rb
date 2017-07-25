@@ -4,12 +4,14 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
+    delete_expired
     @links = Link.all.where(:belongs_to => current_user.id.to_i).page(params[:page])
   end
 
   # GET /links/1
   # GET /links/1.json
   def show
+    delete_expired
   end
 
   # GET /links/new
@@ -19,6 +21,7 @@ class LinksController < ApplicationController
 
   # GET /links/1/edit
   def edit
+    delete_expired
   end
 
   # POST /links
@@ -71,5 +74,14 @@ class LinksController < ApplicationController
     def link_params
       params[:link].merge!(:belongs_to => current_user.id.to_i)
       params.require(:link).permit(:name, :description, :url, :category, :does_expire, :experies_on, :belongs_to)
+    end
+
+    def delete_expired
+      expired = Link.all.where(:does_expire => true).where("experies_on < ?", Time.now)
+      expired.each do |current|
+        if !current.destroy
+          alert[:notice] = "There was a problem deleting an expired link, check the logs"
+        end
+      end
     end
 end
