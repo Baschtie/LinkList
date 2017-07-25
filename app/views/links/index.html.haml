@@ -6,8 +6,7 @@
       %th Description
       %th Url
       %th Category
-      %th Does expire
-      %th Experies on
+      %th Expires
       %th Option
 
   %tbody
@@ -18,8 +17,7 @@
         %td
           %a{:href => link.url} link
         %td= link.category
-        %td= link.does_expire
-        %td= link.experies_on
+        %td= display_expire_flag(link)
         %td= link_to 'Show', link, :class => "ui mini primary button load"
 
 
@@ -31,3 +29,8 @@
 %a.ui.primary.button.load{:href => new_link_path}
   %i.plus.icon
   New link
+
+:javascript
+  $( ".momentjs" ).each(function() {
+    $( this ).html(moment($( ".momentjs" ).text(), "YYYYMMDD").fromNow());
+  });
