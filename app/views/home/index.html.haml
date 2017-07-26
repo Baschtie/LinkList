@@ -3,11 +3,22 @@
     .content
       .header Links
       .description
-        Generates barcodes
+        List of all links
       .ui.divider
       .content.center.aligned
         %i.massive.linkify.icon
     %a.ui.bottom.attached.primary.button.load{:href => links_path}
+      Start
+      %i.arrow.circle.right.icon
+  .ui.card
+    .content
+      .header Tags
+      .description
+        List of all tags
+      .ui.divider
+      .content.center.aligned
+        %i.massive.tags.icon
+    %a.ui.bottom.attached.primary.button.load{:href => tags_path}
       Start
       %i.arrow.circle.right.icon
   .ui.card
