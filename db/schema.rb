@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723162236) do
+ActiveRecord::Schema.define(version: 20170726144128) do
 
   create_table "links", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.string   "url"
-    t.string   "category"
+    t.string   "tags"
     t.boolean  "does_expire"
     t.date     "experies_on"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "belongs_to",  null: false
+    t.integer  "belongs_to"
   end
 
   create_table "users", force: :cascade do |t|

@@ -73,7 +73,7 @@ class LinksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
       params[:link].merge!(:belongs_to => current_user.id.to_i)
-      params.require(:link).permit(:name, :description, :url, :category, :does_expire, :experies_on, :belongs_to)
+      params.require(:link).permit(:name, :description, :url, :tags, :does_expire, :experies_on, :belongs_to)
     end
 
     def delete_expired
