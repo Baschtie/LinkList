@@ -1,0 +1,24 @@
+%h1 Listing tags
+%table.ui.selectable.table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Option
+
+  %tbody
+    - @tags.each do |tag|
+      %tr
+        %td= tag.name
+        %td= tag.description
+        %td= link_to 'Show', tag, :class => "ui mini primary button load"
+
+
+%br
+
+=paginate(@tags)
+
+.ui.divider
+%a.ui.primary.button.load{:href => new_tag_path}
+  %i.plus.icon
+  New tag

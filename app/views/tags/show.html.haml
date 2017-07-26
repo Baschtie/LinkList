@@ -1,0 +1,19 @@
+.ui.top.attached.menu
+  = link_to "Back", :back, :class => "item"
+  %a.item{:href => tags_path}
+    %i.list.icon
+    List
+  %a.item{:href => edit_tag_path(@tag)}
+    %i.pencil.icon
+    Edit
+  .active.item
+    %i.eye.icon
+    Show
+.ui.attached.segment
+
+  %p
+    %b Name:
+    = @tag.name
+  %p
+    %b Description:
+    = @tag.description

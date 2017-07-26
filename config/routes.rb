@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tags
+  get 'tags/page/:page' => 'tags#index'
   resources :links
   get 'links/page/:page' => 'links#index'
   devise_for :users

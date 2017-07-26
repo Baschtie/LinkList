@@ -1,0 +1,15 @@
+.ui.top.attached.menu
+  = link_to "Back", :back, :class => "item"
+  %a.item{:href => tags_path}
+    %i.list.icon
+    List
+  .active.item
+    %i.pencil.icon
+    Edit
+  %a.item{:href => tags_path + "/" + @tag.id.to_s}
+    %i.eye.icon
+    Show
+.ui.attached.segment
+  = render 'form'
+  .ui.divider
+  = link_to "Delete link", @tag, method: :delete, data: { confirm: 'Are you sure?' }, :class => "ui red button"
