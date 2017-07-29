@@ -22,7 +22,7 @@
     = @link.url
   %p
     %b Tags:
-    = @link.tags
+    = display_tag_name(@link.tags)
   %p
     %b Does expire:
     = @link.does_expire

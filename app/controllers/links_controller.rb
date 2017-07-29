@@ -17,11 +17,14 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = Link.new
+    @tags = Tag.all
   end
 
   # GET /links/1/edit
   def edit
     delete_expired
+    @tags = Tag.all
+    @selected = @link.tags
   end
 
   # POST /links
@@ -73,7 +76,7 @@ class LinksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
       params[:link].merge!(:belongs_to => current_user.id.to_i)
-      params.require(:link).permit(:name, :description, :url, :tags, :does_expire, :experies_on, :belongs_to)
+      params.require(:link).permit(:name, :description, :url, :does_expire, :experies_on, :belongs_to, :tags)
     end
 
     def delete_expired

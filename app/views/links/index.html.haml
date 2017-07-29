@@ -16,7 +16,8 @@
         %td= link.description
         %td
           %a{:href => link.url} link
-        %td= link.tags
+        %td
+          .ui.grey.label= display_tag_name(link.tags)
         %td= display_expire_flag(link)
         %td= link_to 'Show', link, :class => "ui mini primary button load"
 

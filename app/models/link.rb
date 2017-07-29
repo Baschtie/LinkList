@@ -1,3 +1,4 @@
 class Link < ApplicationRecord
-  has_many :tags
+  validates :name, :presence => true
+  validates :url, :presence => true, :uniqueness => true
 end

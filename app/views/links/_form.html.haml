@@ -6,7 +6,7 @@
     = f.input :name
     = f.input :description
     = f.input :url
-    = f.input :tags
+    = f.input :tags, :collection => @tags, :selected => @selected, :label_method => :name, input_html: { :class => "ui dropdown" }, prompt: "Select a tag"
     = f.input :does_expire
     = f.input :experies_on
   .actions
@@ -37,3 +37,7 @@
     return false;
     }
   });
+
+  $('.ui.dropdown')
+    .dropdown()
+  ;
