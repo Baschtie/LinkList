@@ -33,5 +33,5 @@
 
 :javascript
   $( ".momentjs" ).each(function() {
-    $( this ).html(moment($( ".momentjs" ).text(), "YYYYMMDD").fromNow());
+    $( this ).html(moment($( this ).text(), "YYYYMMDD").fromNow());
   });
