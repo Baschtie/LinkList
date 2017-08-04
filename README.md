@@ -17,5 +17,5 @@ To be clear LinkList is not a replacment for the storing function every browser 
 
 # Setup development environment
 1. Clone the repo
-2. run bundler ```bundle´´´
-3. setup db ```rake db:migrate´´´
+2. run bundler `bundle`
+3. setup db `rake db:migrate`
