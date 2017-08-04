@@ -1,24 +1,21 @@
-# README
+# LinkList
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+LinkList is a small web app that serves one purpose: storing links you may need later.
+To be clear LinkList is not a replacment for the storing function every browser has, LinkList should be used to store temporary links or specified for example: *https://thisisasite.com/shareid?3hd82hds7Zsh8* or *https://example.com/a/b/36/f.pdf*
 
-Things you may want to cover:
+# What can LinkList do?
+- show/save/edit/delete links
+- show/save/edit/delete tags
+- delete links if they expire
+- show when they expire
 
-* Ruby version
+# What is missing?
+- multiple tags support
+- https check
+- user management
+- a JS update on expires Database
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Setup development environment
+1. Clone the repo
+2. run bundler ```bundle´´´
+3. setup db ```rake db:migrate´´´
