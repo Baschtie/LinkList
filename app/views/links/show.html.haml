@@ -26,6 +26,7 @@
   %p
     %b Does expire:
     = @link.does_expire
-  %p
-    %b Experies on:
-    = @link.experies_on
+  - if @link.does_expire
+    %p
+      %b Experies on:
+      = @link.experies_on
