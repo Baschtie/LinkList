@@ -7,8 +7,11 @@
     = f.input :description
     = f.input :url
     = f.input :tags, :collection => @tags, :selected => @selected, :label_method => :name, input_html: { :class => "ui dropdown" }, prompt: "Select a tag"
-    = f.input :does_expire
-    = f.input :experies_on
+    .ui.segment
+      .field
+        .ui.toggle.checkbox
+          = f.input :does_expire
+      = f.input :experies_on, as: :date, :html5 => true
   .actions
     - if @link.id
       = link_to "Delete link", @link, method: :delete, data: { confirm: 'Are you sure?' }, :class => "ui basic red button"
@@ -43,3 +46,14 @@
   $('.ui.dropdown')
     .dropdown()
   ;
+  if ($('.boolean').checkbox().first().checkbox("is unchecked")) {
+    $('div.field.date').hide();
+  }
+  $('.boolean').checkbox().first().checkbox({
+    onChecked: function() {
+      $('div.field.date').show();
+    },
+    onUnchecked: function() {
+      $('div.field.date').hide();
+    }
+  });
