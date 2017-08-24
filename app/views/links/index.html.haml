@@ -4,7 +4,6 @@
     %tr
       %th Name
       %th Description
-      %th Url
       %th Tags
       %th Expires
       %th Option
@@ -15,11 +14,12 @@
         %td= link.name
         %td= link.description
         %td
-          %a{:href => link.url} link
-        %td
           .ui.grey.label= display_tag_name(link.tags)
         %td= display_expire_flag(link)
-        %td= link_to 'Show', link, :class => "ui mini primary button load"
+        %td
+          .ui.mini.buttons
+            = link_to 'Show', link, :class => "ui basic primary button load"
+            = display_link_button(link.url)
 
 
 %br

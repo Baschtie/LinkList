@@ -11,4 +11,9 @@ module LinksHelper
       end
     end
   end
+
+def display_link_button(link)
+  return "<a href=\"#{link}\" class=\"ui primary button load\" data-tooltip=\"#{link}\" data-position=\"top right\">Visit</a>".html_safe
+end
+
 end
