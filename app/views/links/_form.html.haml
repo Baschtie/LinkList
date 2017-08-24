@@ -10,6 +10,8 @@
     = f.input :does_expire
     = f.input :experies_on
   .actions
+    - if @link.id
+      = link_to "Delete link", @link, method: :delete, data: { confirm: 'Are you sure?' }, :class => "ui basic red button"
     = f.button :button, :type => :submit
 :javascript
   $('.simple_form.ui.form')
