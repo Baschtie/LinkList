@@ -172,6 +172,8 @@ GEM
       railties (>= 4.2.0, < 5.3)
     ruby_parser (3.10.1)
       sexp_processor (~> 4.9)
+    rvm-capistrano (1.5.0)
+      capistrano (>= 2.15.4)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -243,6 +245,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   puma (~> 3.0)
   rails (~> 5.0.4)
+  rvm-capistrano
   sass-rails (~> 5.0)
   simple_form
   spring

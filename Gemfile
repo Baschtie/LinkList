@@ -10,8 +10,6 @@ end
 gem 'rails', '~> 5.0.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-# Use Puma as the app server
-gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -46,6 +44,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'puma', '~> 3.0'
+  gem 'sqlite3'
   gem 'capistrano'
   gem 'better_errors'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
@@ -56,6 +56,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'haml-rails'
   gem 'letter_opener'
+end
+
+group :production do
+  gem 'rvm-capistrano'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
