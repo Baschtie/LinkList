@@ -1,12 +1,21 @@
-%h2 Forgot your password?
-= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  .ui.error.message
-    = f.error_notification
-  = f.input :email, required: true, autofocus: true
-  .actions
-    = f.button :button, "Send me reset password instructions", :type => :submit, :class => "ui button primary load"
-.ui.divider
-= render "devise/shared/links"
+.ui.raised.segments
+  .ui.segment
+    %h2 Reset password
+  .ui.secondary.blue.attached.segment
+    .ui.two.column.middle.aligned.very.relaxed.stackable.grid
+      .column
+        %p
+          If you forgot your password, you can reset it here. Enter the email address of the account and we will send you an email with further instructions.
+        = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          .ui.error.message
+            = f.error_notification
+          = f.input :email, required: true, autofocus: true
+          .actions
+            = f.button :button, "Reset password", :type => :submit
+      .ui.vertical.divider
+        Or
+      .center.aligned.column
+        = render "devise/shared/links"
 
 :javascript
   $('.simple_form.ui.form')

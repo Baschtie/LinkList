@@ -1,15 +1,24 @@
-%h2 Change your password
-= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  .ui.error.message
-    = f.error_notification
-    = f.full_error :reset_password_token
-  = f.input :reset_password_token, as: :hidden
-  = f.input :password, label: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
-  = f.input :password_confirmation, label: "Confirm your new password", required: true
-  .actions
-    = f.button :button, "Change my password", :type => :submit, :class => "ui button primary load"
-.ui.divider
-= render "devise/shared/links"
+.ui.raised.segments
+  .ui.segment
+    %h2 Change your password
+  .ui.secondary.blue.attached.segment
+    .ui.two.column.middle.aligned.very.relaxed.stackable.grid
+      .column
+        %p
+          Your new password needs to be at least 6 characters long. Remember that a strong password is required to ensure the security of your account.
+        = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+          .ui.error.message
+            = f.error_notification
+            = f.full_error :reset_password_token
+          = f.input :reset_password_token, as: :hidden
+          = f.input :password, label: "New password", required: true, autofocus: true
+          = f.input :password_confirmation, label: "Confirm your new password", required: true
+          .actions
+            = f.button :button, "Change my password", :type => :submit
+      .ui.vertical.divider
+        Or
+      .center.aligned.column
+        = render "devise/shared/links"
 
 :javascript
   $('.simple_form.ui.form')

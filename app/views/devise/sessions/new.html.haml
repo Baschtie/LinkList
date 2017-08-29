@@ -1,7 +1,7 @@
 .ui.raised.segments
   .ui.segment
     %h2 Log in
-  .ui.secondary.attached.segment
+  .ui.secondary.blue.attached.segment
     .ui.two.column.middle.aligned.very.relaxed.stackable.grid
       .column
         = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -13,8 +13,7 @@
               .ui.checkbox
                 = f.input :remember_me, as: :boolean
           .actions
-            = f.button :button, "Log in", :type => :submit, :class => "ui button primary load"
-      .ui.vertical.divider
+            = f.button :button, "Log in", :type => :submit
         Or
       .center.aligned.column
         = render "devise/shared/links"

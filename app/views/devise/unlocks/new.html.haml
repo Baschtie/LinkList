@@ -1,13 +1,22 @@
-%h2 Resend unlock instructions
-= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
-  .ui.error.message
-    = f.error_notification
-    = f.full_error :unlock_token
-  = f.input :email, required: true, autofocus: true
-  .actions
-    = f.button :button, "Resend unlock instructions", :type => :submit, :class => "ui button primary load"
-.ui.divider
-= render "devise/shared/links"
+.ui.raised.segments
+  .ui.segment
+    %h2 Resend unlock instructions
+  .ui.secondary.blue.attached.segment
+    .ui.two.column.middle.aligned.very.relaxed.stackable.grid
+      .column
+        %p
+          If you didn't recive an email with instructions on how to unlock your account, you can request a new one here.
+        = simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+          .ui.error.message
+            = f.error_notification
+            = f.full_error :unlock_token
+          = f.input :email, required: true, autofocus: true
+          .actions
+            = f.button :button, "Resend unlock instructions", :type => :submit
+      .ui.vertical.divider
+        Or
+      .center.aligned.column
+        = render "devise/shared/links"
 
 :javascript
   $('.simple_form.ui.form')
