@@ -11,18 +11,10 @@
   %body
     .ui.main.container
       = render "layouts/navbar"
-      - if flash[:notice]
-        .ui.info.message
-          %i.close.icon
+      - flash.each do |key, message|
+        %div{:class => flash_class(key)}
           .header
-            %i.info.circle.icon
-            Info!
-          %p=notice
-      - if flash[:alert]
-        .ui.negative.message
+            = flash_header(key)
           %i.close.icon
-          .header
-            %i.exclamation.circle.icon
-            Alert!
-          %p=alert
+          %p=message
       = yield
