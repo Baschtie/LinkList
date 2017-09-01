@@ -31,3 +31,6 @@
 .text.blue {
   color: #3B83C0;
 }
+.ui.grid>.column+.divider, .ui.grid>.row>.column+.divider {
+    left: 50%;
+}
