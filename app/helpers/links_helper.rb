@@ -1,3 +1,5 @@
+require 'rqrcode'
+
 module LinksHelper
 
   def display_expire_flag(link)
@@ -14,6 +16,21 @@ module LinksHelper
 
 def display_link_button(link)
   return "<a href=\"#{link}\" class=\"ui primary button load\" data-tooltip=\"#{link}\" data-position=\"top right\">Visit</a>".html_safe
+end
+
+def generate_qrcode(link)
+  qrcode = RQRCode::QRCode.new(link)
+  image = qrcode.as_png(
+          resize_gte_to: false,
+          resize_exactly_to: false,
+          fill: 'white',
+          color: 'black',
+          size: 120,
+          border_modules: 4,
+          module_px_size: 6,
+          file: nil # path to write
+          )
+  return image.resize(150, 150)
 end
 
 end

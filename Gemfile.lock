@@ -56,6 +56,7 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+    chunky_png (1.3.8)
     coderay (1.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -170,6 +171,8 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    rqrcode (0.10.1)
+      chunky_png (~> 1.0)
     ruby_parser (3.10.1)
       sexp_processor (~> 4.9)
     rvm-capistrano (1.5.0)
@@ -245,6 +248,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   puma (~> 3.0)
   rails (~> 5.0.4)
+  rqrcode
   rvm-capistrano
   sass-rails (~> 5.0)
   simple_form

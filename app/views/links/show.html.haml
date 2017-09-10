@@ -10,7 +10,7 @@
     %i.eye.icon
     Show
 .ui.attached.segment
-
+  = image_tag(generate_qrcode(@link.url).to_data_url, :class => "ui right floated image")
   %p
     %b Name:
     = @link.name
