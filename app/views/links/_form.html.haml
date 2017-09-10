@@ -13,7 +13,7 @@
           .ui.toggle.checkbox
             = f.input :does_expire
       .ui.green.secondary.segment#date-segment{:style => "display: none"}
-        = f.input :experies_on, as: :date, :html5 => true
+        = f.input :experies_on, as: :date, :html5 => true, :placeholder => "DD/MM/YYYY"
   .actions
     - if @link.id
       = link_to "Delete link", @link, method: :delete, data: { confirm: 'Are you sure?' }, :class => "ui basic red button"
