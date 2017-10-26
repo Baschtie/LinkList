@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+  get 'users/list'
+  get 'users/list/:page' => 'users#list'
+  get 'users/view'
+  get 'users/view/:id' => 'users#view'
+
   resources :tags
   get 'tags/page/:page' => 'tags#index'
+
   resources :links
   get 'links/page/:page' => 'links#index'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }

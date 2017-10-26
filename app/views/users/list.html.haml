@@ -1,0 +1,23 @@
+%h1 Listing users
+%table.ui.selectable.table
+  %thead
+    %tr
+      %th Email
+      %th Created on
+      %th Last sign in
+      %th Permission
+      %th Link
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= user.created_at.strftime("%d.%m.%Y")
+        %td= user.last_sign_in_at.strftime("%d.%m.%Y") unless !user.last_sign_in_at
+        %td= display_is_admin(user.is_admin)
+        %td= link_to 'Show', "#{users_view_path}/#{user.id}", :class => "ui primary button load"
+
+
+%br
+
+=paginate(@users)

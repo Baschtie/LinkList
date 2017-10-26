@@ -21,15 +21,16 @@
     %a.ui.bottom.attached.primary.button.load{:href => tags_path}
       Start
       %i.arrow.circle.right.icon
-  .ui.card
-    .content
-      .header Users
-      .description
-        User Managment
-      .ui.divider
-      .content.center.aligned
-        %i.massive.user.icon.disabled
-    %a.ui.bottom.attached.primary.button.load.disabled{:href => "#"}
-      Start
-      %i.arrow.circle.right.icon
+  - if current_user.is_admin
+    .ui.card
+      .content
+        .header Users
+        .description
+          User Managment
+        .ui.divider
+        .content.center.aligned
+          %i.massive.user.icon
+      %a.ui.bottom.attached.primary.button.load{:href => users_list_path}
+        Start
+        %i.arrow.circle.right.icon
 .ui.divider
