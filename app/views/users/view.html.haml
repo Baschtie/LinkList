@@ -1,7 +1,17 @@
-%h1 Users#view
-%p Find me in app/views/users/view.html.haml
+%h1
+  - if current_user.id == @User.id
+    Your Account
+  - else
+    Account information
+  - if @User.is_admin
+    .ui.orange.label Admin
+.ui.divider
 %p
   Email:
   =@User.email
-  ID:
-  =@User.id
+  %br
+  Account registered on:
+  =@User.created_at.strftime("%d.%m.%Y")
+  %br
+  Total links:
+  =@link_count
