@@ -14,10 +14,9 @@ class UsersController < ApplicationController
         @User = User.find_by_id(params[:id]) or raise ActionController::RoutingError.new('Not Found')
         @link_count = Link.where(:belongs_to => params[:id]).count
       end
-
     else
       @User = User.find_by_id(current_user.id) or raise ActionController::RoutingError.new('Internal Server Error')
-      @link_count = Link.where(:belongs_to => params[:id]).count
+      @link_count = Link.where(:belongs_to => current_user.id).count
     end
   end
 end
