@@ -45,7 +45,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'puma', '~> 3.0'
+  gem 'puma', '~> 3.12'
   gem 'sqlite3'
   gem 'capistrano'
   gem 'better_errors'
